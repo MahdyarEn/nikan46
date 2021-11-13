@@ -1,0 +1,16 @@
+.message {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--content-bg);
+  border-radius: 7px;
+  margin-top: 18px;
+  color: var(--text-color);
+  height: 69px;
+  padding: 0 10px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+}

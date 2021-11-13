@@ -1,13 +1,127 @@
-body {
+@font-face {
+  font-family: "IRANSans";
+  src: url("font/IRANSansWeb.eot"); /* IE9 Compat Modes */
+  src: url("font/IRANSansWeb.ttf") format("truetype"), /* Safari, Android, iOS */ url("font/IRANSansWeb.woff2") format("woff2"), /* Super Modern Browsers */ url("font/IRANSansWeb.woff") format("woff"), /* Pretty Modern Browsers */ url("font/IRANSansWeb.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+  font-family: "Lalezar";
+  src: url("font/Lalezar.eot"); /* IE9 Compat Modes */
+  src: url("font/Lalezar.ttf") format("truetype"), url("font/Lalezar.woff") format("woff"), url("font/Lalezar.ttf") format("truetype");
+}
+* {
+  font-family: "IRANSans";
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  direction: rtl;
+  transition: color 430ms ease-in-out, background 430ms ease-in-out;
+  -webkit-transition: color 430ms ease-in-out, background 430ms ease-in-out;
+  -moz-transition: color 430ms ease-in-out, background 430ms ease-in-out;
+  -ms-transition: color 430ms ease-in-out, background 430ms ease-in-out;
+  -o-transition: color 430ms ease-in-out, background 430ms ease-in-out;
+}
+/* Body */
+body {
+  direction: rtl;
+  text-align: right;
+  overflow-x: hidden;
+  background: var(--bg-main);
+}
+/* Boy dark effect */
+body:before {
+  transition: all 400ms ease-in-out;
+  -webkit-transition: all 400ms ease-in-out;
+  -moz-transition: all 400ms ease-in-out;
+  -ms-transition: all 400ms ease-in-out;
+  -o-transition: all 400ms ease-in-out;
+}
+body.dark::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+}
+body::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  background: var(--bg-main);
+  left: 0;
+  right: 0;
+  top: 0;
+  margin: auto;
+  z-index: -1;
+  border-radius: 200px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.cursorPointer:hover {
+  cursor: pointer;
+}
+
+.shadow {
+  -webkit-box-shadow: 1px 1px 4px rgb(0 0 0 / 20%) !important;
+  box-shadow: 1px 1px 4px rgb(0 0 0 / 20%) !important;
+}
+
+i {
+  font-size: 1.2rem;
+  color: var(--icons);
+}
+:root {
+  --red: #ef4f47;
+  --green: #32bc3b;
+  --yellow: #ffb300;
+}
+.light {
+  --bg-main: #f0f0f0;
+  --content-bg: #fff;
+  --hover-color: #eb466ffa;
+  --icons: #363636;
+  --text-color: #363636;
+  --text-color-seccond: #6e6e6e;
+  --context-menu-hover: rgba(245, 0, 86, 0.062);
+}
+.dark {
+  --bg-main: #24292e;
+  --content-bg: #2f363d;
+  --icons: #979b9e;
+  --text-color: #ffff;
+  --hover-color: #e7ab05;
+  --text-color-seccond: #c2bbbb;
+  --context-menu-hover: rgba(255, 255, 255, 0.1);
+}
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+  .modal {
+    max-width: 500px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1000px;
+  }
+}
+@media (min-width: 1400px) {
+  .container {
+    max-width: 990px;
+  }
 }

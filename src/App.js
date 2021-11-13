@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import Header from "./components/Header";
+// Api
+import { getTime } from "./services/time";
+import { getBirthday } from "./services/birthday";
+import Birthday from "./components/Birthday";
+import Message from "./components/Message";
+const App = () => {
+  const [dateBirth, setdateBirth] = useState({
+    creator: "Mahdyar Entezami",
+    today: "درحال پردازش...",
+    season: "درحال پردازش...",
+    dayofweek: "درحال پردازش...",
+    animal: "درحال پردازش...",
+    date: "درحال پردازش...",
+    datenum: "درحال پردازش...",
+    time: "درحال پردازش...",
 
-function App() {
+    birthdayList: [],
+  });
+  useEffect(() => {
+    const fetchApi = async () => {
+      const data = await getTime();
+      const birthdayData = await getBirthday();
+      setdateBirth({ ...dateBirth, ...data, birthdayList: [...birthdayData.results] });
+    };
+    fetchApi();
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Header date={dateBirth} />
+      {dateBirth.birthdayList.length > 0 ? <Birthday data={dateBirth} date={dateBirth.today} /> : <Message text="درحال دریافت اطلاعات..." />}
     </div>
   );
-}
+};
 
 export default App;
