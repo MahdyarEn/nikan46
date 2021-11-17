@@ -66,6 +66,16 @@ body::before {
   -webkit-box-shadow: 1px 1px 4px rgb(0 0 0 / 20%) !important;
   box-shadow: 1px 1px 4px rgb(0 0 0 / 20%) !important;
 }
+.star {
+  position: fixed;
+  bottom: 16px;
+  right: 50px;
+  background: var(--content-bg);
+  padding: 10px;
+  border-radius: 12px;
+  color: var(--text-color);
+  box-shadow: 1px 1px 4px rgb(0 0 0 / 63%) !important;
+}
 
 i {
   font-size: 1.2rem;
