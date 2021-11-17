@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://lightem.senatorhost.com/test/index2.php";
+const BASE_URL = "http://nikan46.ir/api/birthday.php";
 
 export const getBirthday = async () =>{
     const response = await axios.get(BASE_URL);
