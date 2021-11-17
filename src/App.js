@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
+import { Route, Switch } from "react-router-dom";
 // Api
 import { getTime } from "./services/time";
 import { getBirthday } from "./services/birthday";
 import Birthday from "./components/Birthday";
 import Message from "./components/Message";
+import AllBirthday from "./components/AllBirthday";
 const App = () => {
   const [dateBirth, setdateBirth] = useState({
     creator: "Mahdyar Entezami",
@@ -29,7 +31,12 @@ const App = () => {
   return (
     <div className="container">
       <Header date={dateBirth} />
-      {dateBirth.birthdayList.length > 0 ? <Birthday data={dateBirth} date={dateBirth.today} /> : <Message text="درحال دریافت اطلاعات..." />}
+      <Switch>
+        <Route path="/all">
+          <AllBirthday />
+        </Route>
+        <Route path="/">{dateBirth.birthdayList.length > 0 ? <Birthday data={dateBirth} date={dateBirth.today} /> : <Message text="درحال دریافت اطلاعات..." />}</Route>
+      </Switch>
     </div>
   );
 };

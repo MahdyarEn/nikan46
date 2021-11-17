@@ -21,9 +21,10 @@ main {
 }
 
 main img {
-  width: 5rem;
-  height: 5rem;
+  width: 6rem;
+  height: 6rem;
   margin-top: 1rem;
+  border-radius: 50%;
 }
 
 main ul li {
@@ -169,9 +170,18 @@ main section {
 }
 
 .main-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
 }
 

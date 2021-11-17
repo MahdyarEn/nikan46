@@ -12,6 +12,8 @@ const Birthday = ({ data, date }) => {
   const userList = useRef(null);
   const balloonContianer = useRef(null);
   let count = useRef(0);
+  let newDay = useRef(1);
+  let newMounth = useRef(1);
 
   useEffect(() => {
     // finding birthday
@@ -30,22 +32,23 @@ const Birthday = ({ data, date }) => {
           // console.log(err);
         }
       });
+      // if no one find ...
       if (count.current === 0) {
         setStatus({ ok: false, message: "امروز تولد کسی نیست نزدیک ترین رویداد (:" });
+        newDay.current = date.split("/")[1];
+        newMounth.current = date.split("/")[0];
         for (let i = 0; i < 51; i++) {
-          let newDay = date.split("/")[1];
-          let newMounth = date.split("/")[0];
-          if (newDay <= 31) {
-            newDay++;
-            if (newDay.toString().length !== 2) {
-              newDay = `0${newDay}`;
+          if (newDay.current <= 31) {
+            newDay.current++;
+            if (newDay.current.toString().length !== 2) {
+              newDay.current = `0${newDay.current}`;
             }
-            if (newMounth.toString().length !== 2) {
-              newMounth = `0${newMounth}`;
+            if (newMounth.current.toString().length !== 2) {
+              newMounth.current = `0${newMounth.current}`;
             }
             data.birthdayList.forEach((datam) => {
               const birthday = datam.birthday.split("/")[1] + "/" + datam.birthday.split("/")[2];
-              let newBirthday = `${newMounth}/${newDay}`;
+              let newBirthday = `${newMounth.current}/${newDay.current}`;
               if (newBirthday === birthday) {
                 userList.current.style.display = "flex";
                 balloonContianer.current.style.display = "block";
@@ -54,17 +57,18 @@ const Birthday = ({ data, date }) => {
               }
             });
           } else {
-            newMounth++;
-            newDay = 1;
-            if (newDay.toString().length !== 2) {
-              newDay = `0${newDay}`;
+            // go to next mounth
+            newMounth.current++;
+            newDay.current = 1;
+            if (newDay.current.toString().length !== 2) {
+              newDay.current = `0${newDay.current}`;
             }
-            if (newMounth.toString().length !== 2) {
-              newMounth = `0${newMounth}`;
+            if (newMounth.current.toString().length !== 2) {
+              newMounth.current = `0${newMounth.current}`;
             }
             data.birthdayList.forEach((datam) => {
               const birthday = datam.birthday.split("/")[1] + "/" + datam.birthday.split("/")[2];
-              let newBirthday = `${newMounth}/${newDay}`;
+              let newBirthday = `${newMounth.current}/${newDay.current}`;
               if (newBirthday === birthday) {
                 userList.current.style.display = "flex";
                 balloonContianer.current.style.display = "block";
@@ -72,6 +76,7 @@ const Birthday = ({ data, date }) => {
               }
             });
           }
+          // break checking
           if (count.current >= 1) {
             break;
           }
@@ -84,7 +89,13 @@ const Birthday = ({ data, date }) => {
     const createElements = (data) => {
       let section = $.createElement("section");
       let img = $.createElement("img");
-      img.src = noProfile;
+      let userImage;
+      try {
+        userImage = require(`../img/${data.id}.JPG`).default;
+      } catch (err) {
+        userImage = noProfile;
+      }
+      img.src = userImage;
       img.alt = data.name + " " + data.family;
       let ul = $.createElement("ul");
       userList.current.appendChild(section);
@@ -151,7 +162,7 @@ const Birthday = ({ data, date }) => {
   }, [start, data, date, $]);
   return (
     <>
-      {status.ok ? undefined : <Message text="امروز تولد کسی نیست" />}
+      {status.ok ? undefined : <Message text={status.message} />}
       <div className="main-content">
         {/* // <!-- balloons --> */}
         <div ref={balloonContianer} className="balloon-contianer">

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import styles from "./Header.module.css";
 import useLocalStorage from "../hook/useLocalstorage";
 import Modal from "./Modal";
+import { Route, Switch, Link } from "react-router-dom";
+
 // icon
 import blackIcon from "../icon/black-icon.png";
 import whiteIcon from "../icon/white-icon.png";
@@ -86,9 +88,28 @@ const Header = ({ date }) => {
           {isDark ? <i onClick={toggleDark} className="ri-sun-line cursorPointer" title="حالت روشن"></i> : <i onClick={toggleDark} className="ri-moon-line cursorPointer" title="دارک مود"></i>}
           <i onClick={() => showDate()} className="ri-calendar-todo-line cursorPointer" title="تقویم"></i>
           {!isFullscreen ? <i onClick={toggleFullScreen} className="ri-fullscreen-fill cursorPointer" title="تمام صفحه"></i> : <i onClick={toggleFullScreen} className="ri-fullscreen-exit-fill cursorPointer" title="خروج از حالت تمام صفحه"></i>}
+          <Switch>
+            <Route path="/all">
+              <Link to="/" className={`${styles.allUser} cursorPointer`}>
+                <i className="ri-home-line"></i>
+              </Link>
+            </Route>
+            <Route path="/">
+              <Link to="/all" className={`${styles.allUser} cursorPointer`}>
+                <i className="ri-folder-user-line"></i>
+              </Link>
+            </Route>
+          </Switch>
         </section>
         <section className={styles.headerCenter}>
-          <h2> متولدین امروز :)</h2>
+          <Switch>
+            <Route path="/all">
+              <h2> تولد چهل و شیشیا</h2>
+            </Route>
+            <Route path="/">
+              <h2> متولدین امروز :)</h2>
+            </Route>
+          </Switch>
         </section>
         <section className={styles.headerLeft}>
           <div className={styles.greenCircle}></div>

@@ -21,6 +21,9 @@
   -ms-transition: color 430ms ease-in-out, background 430ms ease-in-out;
   -o-transition: color 430ms ease-in-out, background 430ms ease-in-out;
 }
+a {
+  text-decoration: none;
+}
 /* Body */
 body {
   direction: rtl;
@@ -123,5 +126,38 @@ i {
 @media (min-width: 1400px) {
   .container {
     max-width: 990px;
+  }
+}
+
+/* Media queries */
+@media only screen and (max-width: 767.98px) {
+  header,
+  .loading-data {
+    width: 80%;
+  }
+  main {
+    width: 80% !important;
+  }
+}
+@media only screen and (min-width: 576px) {
+  main {
+    width: 500px;
+  }
+  .modal {
+    max-width: 500px;
+  }
+}
+
+@media only screen and (max-width: 514.98px) {
+  html {
+    font-size: 0.6rem;
+  }
+  .balloon {
+    width: 40px !important;
+    height: 46px !important;
+    margin: 5px 10px !important;
+  }
+  .balloon::after {
+    top: 51px !important;
   }
 }

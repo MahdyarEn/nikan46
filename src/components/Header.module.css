@@ -1,7 +1,13 @@
 .header {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   background: var(--content-bg);
   border-radius: 7px;
@@ -15,8 +21,14 @@
 }
 
 .headerRight {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 .headerRight i {
@@ -31,6 +43,8 @@
 }
 
 .headerLeft {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -49,4 +63,10 @@
 }
 .headerLeft .yellowCircle {
   background-color: var(--yellow);
+}
+
+.allUser {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
